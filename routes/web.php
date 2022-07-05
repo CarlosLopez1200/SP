@@ -33,6 +33,8 @@ Route::get('/offline', function (){
     return view('home');
 });
 
+Route::get('Peticiones/pdf', [App\Http\Controllers\PeticionesController::class, 'pdf'])->name('Peticiones.pdf');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function(){

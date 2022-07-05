@@ -6,6 +6,8 @@ use App\Models\peticiones;
 use App\Models\servicios;
 use App\Models\User;
 use Illuminate\Http\Request;
+use PDF;
+
 
 class PeticionesController extends Controller
 {
@@ -26,6 +28,14 @@ class PeticionesController extends Controller
         //
         $peticiones = peticiones::paginate(5);
         return view('Peticiones.index', compact('peticiones'));
+    }
+
+    public function pdf(){
+        $peticiones = peticiones::paginate(5);
+        $pdf = PDF::loadView('Peticiones.pdf', ['peticiones'=>$peticiones]);
+        $pdf->download('Peticiones');
+        //return $pdf->download('invoice.pdf')
+        //return view('Peticiones.pdf', compact('peticiones'));
     }
 
     /**
