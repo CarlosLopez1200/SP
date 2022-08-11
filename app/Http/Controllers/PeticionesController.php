@@ -37,7 +37,7 @@ class PeticionesController extends Controller
 
         $pdf = PDF::loadView('Peticiones.pdf', ['peticiones'=>$peticiones]);
 
-        return $pdf->download('Peticiones'); 
+        return $pdf->stream('Peticiones'); 
 
        /* return PDF::loadView('Peticiones.pdf', compact('peticiones'))
         ->stream('archivo.pdf');*/
