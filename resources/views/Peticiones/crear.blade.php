@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+Peticiones
+@endsection
 @section('content')
     <section class="section">
         <div class="section-header">
@@ -57,13 +59,13 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="servicio_id">Servicios</label>
-                                    {!! Form::select('servicio_id', $servicios, array('class' => 'form-control')) !!}
+                                    {!! Form::select('servicio_id', $servicios,[], array('class' => 'form-control')) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="usuario_id">Encargado</label>
-                                    {!! Form::select('usuario_id', $usuarios, array('class' => 'form-control')) !!}
+                                    {!! Form::select('usuario_id', $usuarios,[], array('class' => 'form-control')) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">

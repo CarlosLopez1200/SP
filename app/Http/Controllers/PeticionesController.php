@@ -32,8 +32,15 @@ class PeticionesController extends Controller
 
     public function pdf(){
         $peticiones = peticiones::paginate(5);
+
+        view()->share('Peticiones.pdf', $peticiones);
+
         $pdf = PDF::loadView('Peticiones.pdf', ['peticiones'=>$peticiones]);
-        $pdf->download('Peticiones');
+
+        return $pdf->download('Peticiones'); 
+
+       /* return PDF::loadView('Peticiones.pdf', compact('peticiones'))
+        ->stream('archivo.pdf');*/
         //return $pdf->download('invoice.pdf')
         //return view('Peticiones.pdf', compact('peticiones'));
     }

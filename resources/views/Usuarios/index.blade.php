@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+Usuarios
+@endsection
 @section('content')
     <section class="section">
         <div class="section-header">
@@ -11,17 +13,17 @@
                     <div class="card">
                         <div class="card-body">
                             <a class="btn btn-warning" href="{{ route('Usuarios.create') }}"> Nuevo </a>
-
-                            <table class="table table-striped mt-2">
-                                <thead style="background-color: #6777ef">
-                                    <th style="display:none;">ID</th>
-                                    <th style="color: #fff">Nombre</th>
-                                    <th style="color: #fff">Correo</th>
-                                    <th style="color: #fff">Rol</th>
-                                    <th style="color: #fff">Acciones</th>
-                                </thead>
-                                <tbody>
-                                    @foreach ($usuarios as $usuario)
+                            <div class="table-responsive">
+                                <table class="table table-striped mt-2">
+                                    <thead style="background-color: #6777ef">
+                                        <th class="text-center" style="display:none;">ID</th>
+                                        <th class="text-center" style="color: #fff">Nombre</th>
+                                        <th class="text-center" style="color: #fff">Correo</th>
+                                        <th class="text-center" style="color: #fff">Rol</th>
+                                        <th class="text-center" style="color: #fff">Acciones</th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($usuarios as $usuario)
                                         <tr>
                                             <td style="display:none;">{{$usuario->id}}</td>
                                             <td>{{$usuario->name}}</td>
@@ -39,12 +41,12 @@
                                                 {!! Form::open(['method'=> 'DELETE', 'route'=> ['Usuarios.destroy', $usuario->id], 'style'=>'display:inline']) !!}
                                                     {!! Form::submit('Borrar', ['class'=> 'btn btn-danger']) !!}
                                                 {!! Form::close() !!}
-                                  
                                             </td>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                             <div class="pagination justify-content-end">
                                 {!! $usuarios->links() !!}
                            </div>
